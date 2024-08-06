@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple To-Do App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>To-Do Liste</h1>
+        <input type="text" id="todoInput" placeholder="Neue Aufgabe...">
+        <button onclick="addTodo()">Hinzufügen</button>
+        <div class="filter-buttons">
+            <button onclick="setFilter('all')">show all todos</button>
+            <button onclick="setFilter('done')">show done todos</button>
+            <button onclick="setFilter('open')">show open todos</button>
+        </div>
+        <ul id="todoList"></ul>
+    </div>
+    <script src="to-do-app.js"></script>
+</body>
+
+</html>

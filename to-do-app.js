@@ -3,6 +3,15 @@ let state = {
   filter: "all",
 };
 
+// Lade den gespeicherten Zustand beim Laden der Seite
+window.onload = function () {
+  const savedState = localStorage.getItem("todoState");
+  if (savedState) {
+    state = JSON.parse(savedState);
+    renderTodos();
+  }
+};
+
 function addTodo() {
   const todoInput = document.getElementById("todoInput");
   const newTodo = todoInput.value.trim();
@@ -10,12 +19,14 @@ function addTodo() {
   if (newTodo) {
     state.todos.push({ text: newTodo, done: false });
     todoInput.value = "";
+    saveState();
     renderTodos();
   }
 }
 
 function toggleTodo(index) {
   state.todos[index].done = !state.todos[index].done;
+  saveState();
   renderTodos();
 }
 
@@ -47,5 +58,11 @@ function renderTodos() {
   });
 }
 
+// Speichert den Zustand im localStorage
+function saveState() {
+  localStorage.setItem("todoState", JSON.stringify(state));
+}
+
 // Initial render
 renderTodos();
+
